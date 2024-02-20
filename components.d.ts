@@ -23,6 +23,7 @@ declare module 'vue' {
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     PaymentSheet: typeof import('./src/components/PaymentSheet.vue')['default']
+    ProductCard: typeof import('./src/components/shared/ProductCard.vue')['default']
     Products: typeof import('./src/components/Products.vue')['default']
     Search: typeof import('./src/components/icons/Search.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']

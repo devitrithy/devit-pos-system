@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
 import { type Ref, ref } from "vue";
-import Cart from "./shared/Cart.vue";
+import ProductCard from "./shared/ProductCard.vue";
 import { stores } from "../store";
 import IconLoading from "./icons/IconLoading.vue";
 
@@ -26,7 +26,7 @@ getProduct();
     v-if="loading === false"
     class="w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
   >
-    <Cart
+    <ProductCard
       v-for="i in stores.products.length"
       qty="0"
       :name="stores.products[i - 1].title"

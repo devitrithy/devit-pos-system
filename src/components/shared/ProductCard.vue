@@ -14,12 +14,10 @@ let qty = ref(parseInt(props.qty!) || 0);
   <div
     class="h-96 w-full bg-container rounded-md shadow-md p-4 flex flex-col justify-between"
   >
-    <!--  -->
     <img
-      class="object-cover h-2/3 w-full rounded-md shadow-md"
+      class="object-contain h-2/3 w-full rounded-md shadow-md bg-white"
       :src="img"
-      alt=""
-      srcset=""
+      :alt="name"
     />
     <div class="flex items-center justify-between">
       <h1 class="text-ellipsis overflow-hidden truncate">{{ name }}</h1>
