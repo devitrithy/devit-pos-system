@@ -28,7 +28,7 @@ export const stores = reactive({
       qty: this.carts[index].qty + 1,
     });
   },
-  findIndex(product: Product): Number {
+  findIndex(product: Product): number {
     for (let i = 0; i < this.carts.length; i++) {
       if (this.carts[i].product.id === product.id) {
         return i;
