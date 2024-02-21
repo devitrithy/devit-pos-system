@@ -31,7 +31,7 @@ let options: Option[] = [
 </script>
 <template>
   <aside
-    class="w-1/3 h-full bg-container rounded-md shadow-md sticky top-0 p-4 hidden md:block"
+    class="w-[691px] h-full bg-container rounded-md shadow-md sticky top-0 p-4 hidden md:block"
   >
     <!--  -->
     <div class="flex flex-col justify-between h-full">

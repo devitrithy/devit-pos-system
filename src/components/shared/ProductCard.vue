@@ -47,7 +47,7 @@ function remove() {
       <span class="mr-4"><IconAddToCart /></span>Add Item
     </el-button>
 
-    <div class="flex items-center justify-between gap-2" v-else>
+    <div class="flex items-center justify-between gap-4" v-else>
       <el-button
         class="w-1/2"
         @click="remove"
