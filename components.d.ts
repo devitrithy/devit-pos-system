@@ -18,6 +18,8 @@ declare module 'vue' {
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconLoading: typeof import('./src/components/icons/IconLoading.vue')['default']
+    IconMinus: typeof import('./src/components/icons/IconMinus.vue')['default']
+    IconPlus: typeof import('./src/components/icons/IconPlus.vue')['default']
     IconSearch: typeof import('./src/components/icons/IconSearch.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']

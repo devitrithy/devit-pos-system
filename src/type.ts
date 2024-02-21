@@ -1,7 +1,3 @@
-export interface Products {
-  products: Product[];
-}
-
 export interface Product {
   id: string;
   title: string;
@@ -13,4 +9,9 @@ export interface Product {
     rate: number;
     count: number;
   };
+}
+
+export interface Cart {
+  product: Product;
+  qty: number;
 }

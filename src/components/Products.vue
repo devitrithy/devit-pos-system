@@ -27,12 +27,9 @@ getProduct();
     class="w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
   >
     <ProductCard
-      v-for="i in stores.products.length"
-      qty="0"
-      :name="stores.products[i - 1].title"
-      :price="stores.products[i - 1].price"
-      :category="stores.products[i - 1].category"
-      :img="stores.products[i - 1].image"
+      v-for="product in stores.products"
+      :key="product.id"
+      :product="product"
     />
   </main>
   <main v-else class="w-full flex items-center justify-center">
