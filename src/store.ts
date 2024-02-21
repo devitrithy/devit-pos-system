@@ -7,7 +7,7 @@ export const stores = reactive({
   subtotal: 0.0 as number,
   addToCart(product: Product): void {
     this.carts.push({ product: product, qty: 1 });
-    this.subtotal += product.price;
+    this.getSubTotal();
   },
   minusItemInCart(product: Product): void {
     let index = this.findIndex(product);
@@ -19,10 +19,13 @@ export const stores = reactive({
     } else {
       this.removeItemInCart(product);
     }
-    this.subtotal -= product.price;
+    this.getSubTotal();
   },
   removeItemInCart(product: Product): void {
     this.carts.splice(this.findIndex(product), 1);
+    this.getSubTotal();
+  },
+  getSubTotal() {
     this.subtotal = 0;
     this.carts.forEach((cart: Cart) => {
       this.subtotal += cart.product.price * cart.qty;
@@ -34,7 +37,7 @@ export const stores = reactive({
       product: product,
       qty: this.carts[index].qty + 1,
     });
-    this.subtotal += product.price;
+    this.getSubTotal();
   },
   findIndex(product: Product): number {
     for (let i = 0; i < this.carts.length; i++) {

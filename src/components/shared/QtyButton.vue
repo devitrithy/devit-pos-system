@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 <template>
   <div
-    class="flex items-center gap-4 bg-blue-300 p-1 rounded-full px-1 w-36 justify-between"
+    class="flex items-center gap-4 bg-blue-200 p-1 rounded-full px-1 w-36 justify-between"
   >
     <el-button @click="stores.minusItemInCart(product)" circle type="primary"
       ><IconMinus

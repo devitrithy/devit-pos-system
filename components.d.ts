@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Cart: typeof import('./src/components/shared/Cart.vue')['default']
     CartCard: typeof import('./src/components/shared/CartCard.vue')['default']
+    Divide: typeof import('./src/components/shared/Divide.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElIcon: typeof import('element-plus/es')['ElIcon']

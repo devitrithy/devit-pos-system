@@ -1,5 +1,10 @@
 {
   "name": "pos-system",
+  "author": {
+    "email": "devitrithy1@gmail.com",
+    "name": "Rithy Devit",
+    "url": "https://github.com/devitrithy"
+  },
   "version": "0.0.0",
   "private": true,
   "type": "module",

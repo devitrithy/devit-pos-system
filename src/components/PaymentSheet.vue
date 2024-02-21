@@ -7,6 +7,7 @@ interface Option {
 import { stores } from "@/store";
 import IconCalculator from "./icons/IconCalculator.vue";
 import CartCard from "./shared/CartCard.vue";
+import Divide from "@/components/shared/Divide.vue";
 import { ref, type Ref } from "vue";
 
 const usCurrency = new Intl.NumberFormat("en-US", {
@@ -46,7 +47,7 @@ let options: Option[] = [
             <IconCalculator class="text-4xl" />
           </button>
         </div>
-        <div class="h-[0.5px] bg-gray-500 mt-4 mb-2"></div>
+        <Divide />
       </div>
       <div
         class="flex flex-col gap-4 overflow-auto h-full"
@@ -59,6 +60,7 @@ let options: Option[] = [
         />
         <div v-else><h1>No Product</h1></div>
       </div>
+      <Divide />
       <div class="my-4">
         <h2 class="flex items-center justify-between">
           <span>Subtotal</span>
@@ -82,7 +84,7 @@ let options: Option[] = [
             />
           </el-select>
         </h2>
-        <div class="h-[0.5px] bg-gray-500 my-4"></div>
+        <Divide />
         <h2 class="flex items-center justify-between">
           <span>Total</span>
           <span class="font-bold text-xl">{{
