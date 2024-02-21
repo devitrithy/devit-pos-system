@@ -24,7 +24,7 @@ getProduct();
 <template>
   <main
     v-if="loading === false"
-    class="w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
+    class="w-full grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4"
   >
     <ProductCard
       v-for="product in stores.products"

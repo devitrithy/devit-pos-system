@@ -17,6 +17,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  optimizeDeps: {
+    exclude: ["vue-demi"],
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

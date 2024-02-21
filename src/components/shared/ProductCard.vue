@@ -3,12 +3,21 @@ import IconAddToCart from "../icons/IconAddToCart.vue";
 import type { Product } from "@/type";
 import { stores } from "@/store";
 import QtyButton from "./QtyButton.vue";
-
+import { useSound } from "@vueuse/sound";
+import addSfx from "@/assets/add.mp3";
+import removeSfx from "@/assets/remove.mp3";
+const addSound = useSound(addSfx);
+const removeSound = useSound(removeSfx);
 const props = defineProps<{
   product: Product;
 }>();
 function add() {
   stores.addToCart(props.product);
+  addSound.play();
+}
+function remove() {
+  stores.removeItemInCart(props.product);
+  removeSound.play();
 }
 </script>
 <template>
@@ -41,7 +50,7 @@ function add() {
     <div class="flex items-center justify-between gap-2" v-else>
       <el-button
         class="w-1/2"
-        @click="stores.removeItemInCart(product)"
+        @click="remove"
         round
         type="danger"
         size="large"
