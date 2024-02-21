@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import IconAddToCart from "../icons/IconAddToCart.vue";
-import IconPlus from "../icons/IconPlus.vue";
-import IconMinus from "../icons/IconMinus.vue";
 import type { Product } from "@/type";
 import { stores } from "@/store";
+import QtyButton from "./QtyButton.vue";
 
 const props = defineProps<{
   product: Product;
@@ -38,7 +37,8 @@ function add() {
     >
       <span class="mr-4"><IconAddToCart /></span>Add Item
     </el-button>
-    <div v-else class="flex items-center justify-between gap-2">
+
+    <div class="flex items-center justify-between gap-2" v-else>
       <el-button
         class="w-1/2"
         @click="stores.removeItemInCart(product)"
@@ -49,20 +49,7 @@ function add() {
       >
         Remove
       </el-button>
-      <div
-        class="flex items-center gap-4 bg-blue-300 p-1 rounded-full px-2 w-1/2 justify-between"
-      >
-        <el-button
-          @click="stores.minusItemInCart(product)"
-          circle
-          type="primary"
-          ><IconMinus
-        /></el-button>
-        <h4>{{ stores.getQty(product) }}</h4>
-        <el-button @click="stores.plusItemInCart(product)" circle type="primary"
-          ><IconPlus
-        /></el-button>
-      </div>
+      <QtyButton :product="product" />
     </div>
   </div>
 </template>

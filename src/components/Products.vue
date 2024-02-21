@@ -32,6 +32,10 @@ getProduct();
       :product="product"
     />
   </main>
+  <!-- <main
+    v-else
+    class="w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
+  > -->
   <main v-else class="w-full flex items-center justify-center">
     <IconLoading class="text-9xl text-gray-600" />
   </main>
