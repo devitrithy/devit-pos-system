@@ -6,8 +6,8 @@ import IconMinus from "@/components/icons/IconMinus.vue";
 import { useSound } from "@vueuse/sound";
 import plus from "@/assets/plus.mp3";
 import minus from "@/assets/minus.mp3";
-const plusSound = useSound(plus);
-const minusSound = useSound(minus);
+const plusSound = useSound(plus, { volume: stores.volume });
+const minusSound = useSound(minus, { volume: stores.volume });
 
 const increseQty = (product: Product) => {
   stores.plusItemInCart(product);

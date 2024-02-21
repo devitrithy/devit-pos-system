@@ -6,8 +6,8 @@ import QtyButton from "./QtyButton.vue";
 import { useSound } from "@vueuse/sound";
 import addSfx from "@/assets/add.mp3";
 import removeSfx from "@/assets/trash.mp3";
-const addSound = useSound(addSfx);
-const removeSound = useSound(removeSfx);
+const addSound = useSound(addSfx, { volume: stores.volume });
+const removeSound = useSound(removeSfx, { volume: stores.volume });
 const props = defineProps<{
   product: Product;
 }>();

@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import axios from "axios";
 import Navbar from "./components/Navbar.vue";
 import PaymentSheet from "./components/PaymentSheet.vue";
 import Products from "./components/Products.vue";
-import { stores } from "./store";
-import { ref, type Ref } from "vue";
 </script>
 
 <template>

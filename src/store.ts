@@ -5,6 +5,7 @@ export const stores = reactive({
   products: [] as Product[],
   carts: [] as Cart[],
   subtotal: 0.0 as number,
+  volume: 0.25 as number,
   addToCart(product: Product): void {
     this.carts.push({ product: product, qty: 1 });
     this.getSubTotal();
