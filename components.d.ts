@@ -12,6 +12,7 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSlider: typeof import('element-plus/es')['ElSlider']
     IconAddToCart: typeof import('./src/components/icons/IconAddToCart.vue')['default']
     IconCalculator: typeof import('./src/components/icons/IconCalculator.vue')['default']
     IconCart: typeof import('./src/components/icons/IconCart.vue')['default']
