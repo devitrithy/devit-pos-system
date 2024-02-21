@@ -16,12 +16,12 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "@vueuse/sound": "^2.0.1",
     "axios": "^1.6.7",
     "element-plus": "^2.5.6",
     "vue": "^3.4.15"
   },
   "devDependencies": {
-    "@vueuse/sound": "^2.0.1",
     "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.11.10",
     "@vitejs/plugin-vue": "^5.0.3",
