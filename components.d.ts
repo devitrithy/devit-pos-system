@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     CartCard: typeof import('./src/components/shared/CartCard.vue')['default']
+    ConfirmDelete: typeof import('./src/components/shared/ConfirmDelete.vue')['default']
     Divide: typeof import('./src/components/shared/Divide.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElOption: typeof import('element-plus/es')['ElOption']
@@ -18,9 +19,12 @@ declare module 'vue' {
     IconCart: typeof import('./src/components/icons/IconCart.vue')['default']
     IconLoading: typeof import('./src/components/icons/IconLoading.vue')['default']
     IconMinus: typeof import('./src/components/icons/IconMinus.vue')['default']
+    IconMute: typeof import('./src/components/icons/IconMute.vue')['default']
     IconPlus: typeof import('./src/components/icons/IconPlus.vue')['default']
     IconSearch: typeof import('./src/components/icons/IconSearch.vue')['default']
     IconTrash: typeof import('./src/components/icons/IconTrash.vue')['default']
+    IconVolume: typeof import('./src/components/icons/IconVolume.vue')['default']
+    IconVolumeDown: typeof import('./src/components/icons/IconVolumeDown.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     PaymentSheet: typeof import('./src/components/PaymentSheet.vue')['default']
     ProductCard: typeof import('./src/components/shared/ProductCard.vue')['default']

@@ -5,16 +5,45 @@ import QtyButton from "./QtyButton.vue";
 import { stores } from "@/store";
 import { useSound } from "@vueuse/sound";
 import removeSfx from "@/assets/trash.mp3";
-const removeSound = useSound(removeSfx, { volume: stores.volume });
+import { ref } from "vue";
+import { ElMessageBox, ElMessage } from "element-plus";
+const soundRef = ref(stores.volume / 100);
+const removeSound = useSound(removeSfx, { volume: soundRef });
 
 const remove = (product: Product) => {
   stores.removeItemInCart(product);
+  soundRef.value = stores.volume / 100;
   removeSound.play();
 };
 
 const props = defineProps<{
   cart: Cart;
 }>();
+
+const open = (product: Product) => {
+  ElMessageBox.confirm(
+    "Are you sure you want to remove this item?",
+    "Confirmation",
+    {
+      confirmButtonText: "Confirm",
+      cancelButtonText: "Cancel",
+      type: "warning",
+    }
+  )
+    .then(() => {
+      remove(product);
+      ElMessage({
+        type: "success",
+        message: "Delete completed",
+      });
+    })
+    .catch(() => {
+      ElMessage({
+        type: "info",
+        message: "Delete canceled",
+      });
+    });
+};
 </script>
 <template>
   <!--  -->
@@ -34,13 +63,13 @@ const props = defineProps<{
           {{ cart.product.title }}
         </h1>
         <h1 class="text-sm text-gray-500">
-          <span>{{ cart.product.price }}</span
+          <span>${{ cart.product.price }}</span
           ><span> x </span>{{ cart.qty }}
         </h1>
       </div>
     </div>
     <QtyButton :product="cart.product" />
-    <button @click="remove(cart.product)" class="text-xl text-red-500">
+    <button @click="open(cart.product)" class="text-xl text-red-500">
       <IconTrash />
     </button>
   </div>

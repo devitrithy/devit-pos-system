@@ -6,15 +6,19 @@ import IconMinus from "@/components/icons/IconMinus.vue";
 import { useSound } from "@vueuse/sound";
 import plus from "@/assets/plus.mp3";
 import minus from "@/assets/minus.mp3";
-const plusSound = useSound(plus, { volume: stores.volume });
-const minusSound = useSound(minus, { volume: stores.volume });
+import { ref } from "vue";
+const volumeRef = ref(stores.volume / 100);
+const plusSound = useSound(plus, { volume: volumeRef });
+const minusSound = useSound(minus, { volume: volumeRef });
 
 const increseQty = (product: Product) => {
   stores.plusItemInCart(product);
+  volumeRef.value = stores.volume / 100;
   plusSound.play();
 };
 const decreseQty = (product: Product) => {
   stores.minusItemInCart(product);
+  volumeRef.value = stores.volume / 100;
   minusSound.play();
 };
 const props = defineProps<{

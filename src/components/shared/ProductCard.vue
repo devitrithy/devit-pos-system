@@ -6,19 +6,49 @@ import QtyButton from "./QtyButton.vue";
 import { useSound } from "@vueuse/sound";
 import addSfx from "@/assets/add.mp3";
 import removeSfx from "@/assets/trash.mp3";
-const addSound = useSound(addSfx, { volume: stores.volume });
-const removeSound = useSound(removeSfx, { volume: stores.volume });
+import { ref } from "vue";
+import { ElMessageBox, ElMessage } from "element-plus";
+const volumeRef = ref(stores.volume / 100);
+const { play } = useSound(addSfx, { volume: volumeRef });
+const removeSound = useSound(removeSfx, { volume: volumeRef });
 const props = defineProps<{
   product: Product;
 }>();
 function add() {
   stores.addToCart(props.product);
-  addSound.play();
+  volumeRef.value = stores.volume / 100;
+  play();
 }
 function remove() {
   stores.removeItemInCart(props.product);
+  volumeRef.value = stores.volume / 100;
+
   removeSound.play();
 }
+const open = () => {
+  ElMessageBox.confirm(
+    "Are you sure you want to remove this item?",
+    "Confirmation",
+    {
+      confirmButtonText: "Confirm",
+      cancelButtonText: "Cancel",
+      type: "warning",
+    }
+  )
+    .then(() => {
+      remove();
+      ElMessage({
+        type: "success",
+        message: "Delete completed",
+      });
+    })
+    .catch(() => {
+      ElMessage({
+        type: "info",
+        message: "Delete canceled",
+      });
+    });
+};
 </script>
 <template>
   <div
@@ -50,7 +80,7 @@ function remove() {
     <div class="flex items-center justify-between gap-4" v-else>
       <el-button
         class="w-1/2"
-        @click="remove"
+        @click="open"
         round
         type="danger"
         size="large"

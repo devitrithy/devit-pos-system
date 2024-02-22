@@ -3,9 +3,19 @@ import type { Cart, Product } from "./type";
 
 export const stores = reactive({
   products: [] as Product[],
+  productFilter: [] as Product[],
+  category: [] as string[],
   carts: [] as Cart[],
+  searchProduct: "",
   subtotal: 0.0 as number,
-  volume: 0.25 as number,
+  volume: 25 as number,
+  handleSearch() {
+    this.productFilter = this.products.filter((product: Product) => {
+      return product.searchTerm
+        ?.toLowerCase()
+        .includes(this.searchProduct.toLowerCase());
+    });
+  },
   addToCart(product: Product): void {
     this.carts.push({ product: product, qty: 1 });
     this.getSubTotal();

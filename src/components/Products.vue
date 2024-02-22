@@ -4,6 +4,7 @@ import { type Ref, ref } from "vue";
 import ProductCard from "./shared/ProductCard.vue";
 import { stores } from "../store";
 import IconLoading from "./icons/IconLoading.vue";
+import type { Product } from "@/type";
 
 let loading: Ref<boolean> = ref(false);
 async function getProduct() {
@@ -11,7 +12,12 @@ async function getProduct() {
   await axios
     .get("https://fakestoreapi.com/products")
     .then((res) => {
-      stores.products = res.data;
+      let searchItem: Product[] = res.data.map((product: Product) => ({
+        ...product,
+        searchTerm: `${product.title} ${product.description} ${product.id} ${product.price}`,
+      }));
+      stores.products = searchItem;
+      stores.productFilter = searchItem;
 
       loading.value = false;
     })
@@ -27,7 +33,7 @@ getProduct();
     class="w-full grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4"
   >
     <ProductCard
-      v-for="product in stores.products"
+      v-for="product in stores.productFilter"
       :key="product.id"
       :product="product"
     />

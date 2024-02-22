@@ -9,6 +9,7 @@ export interface Product {
     rate: number;
     count: number;
   };
+  searchTerm?: string;
 }
 
 export interface Cart {

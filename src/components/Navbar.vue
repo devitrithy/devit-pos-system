@@ -2,7 +2,32 @@
 import { ref, type Ref } from "vue";
 import IconSearch from "./icons/IconSearch.vue";
 import IconCart from "./icons/IconCart.vue";
+import { stores } from "@/store";
+import IconVolume from "./icons/IconVolume.vue";
+import IconVolumeDown from "./icons/IconVolumeDown.vue";
+import IconMute from "./icons/IconMute.vue";
+const oldVolume: Ref<number> = ref(stores.volume);
+const mute: Ref<boolean> = ref(false);
 
+const changeVolume = () => {
+  mute.value = !mute.value;
+  if (mute.value) {
+    oldVolume.value = stores.volume;
+    stores.volume = 0;
+  } else {
+    stores.volume = oldVolume.value;
+  }
+};
+
+const controlVolume = () => {
+  console.log("HIT");
+
+  if (stores.volume < 1) {
+    mute.value = true;
+  } else {
+    mute.value = false;
+  }
+};
 let search: Ref<String> = ref("");
 </script>
 <template>
@@ -18,7 +43,8 @@ let search: Ref<String> = ref("");
       >
         <input
           type="text"
-          v-model="search"
+          v-model="stores.searchProduct"
+          @keyup="stores.handleSearch"
           class="bg-transparent outline-none indent-6 caret-blue-500"
           placeholder="Search..."
         />
@@ -27,8 +53,16 @@ let search: Ref<String> = ref("");
         </button>
       </div>
     </div>
-    <ul>
-      <li><a href=""></a></li>
-    </ul>
+    <div class="w-1/12 flex gap-4 items-center">
+      <button @click="changeVolume">
+        <IconVolume v-if="!mute && stores.volume > 50" class="text-xl" />
+        <IconVolumeDown
+          v-else-if="!mute && stores.volume < 50"
+          class="text-xl"
+        />
+        <IconMute v-else class="text-xl" />
+      </button>
+      <el-slider v-model="stores.volume" @change="controlVolume" />
+    </div>
   </nav>
 </template>
