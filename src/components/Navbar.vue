@@ -33,7 +33,7 @@ const controlVolume = () => {
     class="flex items-center justify-between px-8 h-[88px] bg-container shadow-md"
   >
     <a href="/" class="flex items-center uppercase text-blue-600 gap-2 text-xl">
-      <IconCart /> Shopping
+      <IconCart /> DevitPOS
     </a>
     <div
       class="rounded-full overflow-hidden flex items-center justify-between bg-gray-300 border border-transparent w-2/3"
@@ -42,7 +42,7 @@ const controlVolume = () => {
         type="text"
         v-model="stores.searchProduct"
         @keyup="stores.handleSearch"
-        class="bg-transparent outline-none indent-6 caret-blue-500 w-full"
+        class="bg-transparent outline-none indent-6 caret-blue-500 w-ful/l"
         placeholder="Search..."
       />
       <button class="bg-blue-500 text-white w-16 h-11">
