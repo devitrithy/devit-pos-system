@@ -33,7 +33,7 @@ let options: Option[] = [
         <div class="flex items-center justify-between h-20">
           <div>
             <h1 class="text-xl mb-2">Order Samuray</h1>
-            <h3 class="text-sm text-gray-500">#01010101</h3>
+            <h3 class="text-sm text-gray-500">#01100100</h3>
           </div>
           <ResetButton />
         </div>
