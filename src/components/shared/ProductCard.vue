@@ -6,11 +6,13 @@ import QtyButton from "./QtyButton.vue";
 import { useSound } from "@vueuse/sound";
 import addSfx from "@/assets/add.mp3";
 import removeSfx from "@/assets/trash.mp3";
+import warningSfx from "@/assets/warning.mp3";
 import { ref } from "vue";
 import { ElMessageBox, ElMessage } from "element-plus";
 const volumeRef = ref(stores.volume / 100);
 const { play } = useSound(addSfx, { volume: volumeRef });
 const removeSound = useSound(removeSfx, { volume: volumeRef });
+const warningSound = useSound(warningSfx, { volume: volumeRef });
 const props = defineProps<{
   product: Product;
 }>();
@@ -22,32 +24,37 @@ function add() {
 function remove() {
   stores.removeItemInCart(props.product);
   volumeRef.value = stores.volume / 100;
+  ElMessage({
+    type: "success",
+    message: "Remove completed",
+  });
 
   removeSound.play();
 }
 const open = () => {
-  ElMessageBox.confirm(
-    "Are you sure you want to remove this item?",
-    "Confirmation",
-    {
-      confirmButtonText: "Confirm",
-      cancelButtonText: "Cancel",
-      type: "warning",
-    }
-  )
-    .then(() => {
-      remove();
-      ElMessage({
-        type: "success",
-        message: "Delete completed",
+  if (stores.getQty(props.product) > 1) {
+    warningSound.play();
+    ElMessageBox.confirm(
+      "Are you sure you want to remove this item?",
+      "Confirmation",
+      {
+        confirmButtonText: "Confirm",
+        cancelButtonText: "Cancel",
+        type: "warning",
+      }
+    )
+      .then(() => {
+        remove();
+      })
+      .catch(() => {
+        ElMessage({
+          type: "info",
+          message: "Remove canceled",
+        });
       });
-    })
-    .catch(() => {
-      ElMessage({
-        type: "info",
-        message: "Delete canceled",
-      });
-    });
+  } else {
+    remove();
+  }
 };
 </script>
 <template>

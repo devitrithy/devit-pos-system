@@ -2,6 +2,8 @@
 import Navbar from "./components/Navbar.vue";
 import PaymentSheet from "./components/PaymentSheet.vue";
 import Products from "./components/Products.vue";
+import { stores } from "./store";
+stores.volume = parseInt(localStorage.getItem("volume") || "25");
 </script>
 
 <template>

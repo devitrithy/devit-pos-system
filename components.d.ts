@@ -21,6 +21,7 @@ declare module 'vue' {
     IconMinus: typeof import('./src/components/icons/IconMinus.vue')['default']
     IconMute: typeof import('./src/components/icons/IconMute.vue')['default']
     IconPlus: typeof import('./src/components/icons/IconPlus.vue')['default']
+    IconReset: typeof import('./src/components/icons/IconReset.vue')['default']
     IconSearch: typeof import('./src/components/icons/IconSearch.vue')['default']
     IconTrash: typeof import('./src/components/icons/IconTrash.vue')['default']
     IconVolume: typeof import('./src/components/icons/IconVolume.vue')['default']
@@ -30,5 +31,6 @@ declare module 'vue' {
     ProductCard: typeof import('./src/components/shared/ProductCard.vue')['default']
     Products: typeof import('./src/components/Products.vue')['default']
     QtyButton: typeof import('./src/components/shared/QtyButton.vue')['default']
+    ResetButton: typeof import('./src/components/shared/ResetButton.vue')['default']
   }
 }

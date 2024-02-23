@@ -5,21 +5,15 @@ interface Option {
 }
 
 import { stores } from "@/store";
-import IconCalculator from "./icons/IconCalculator.vue";
 import CartCard from "./shared/CartCard.vue";
 import Divide from "@/components/shared/Divide.vue";
 import { ref, type Ref } from "vue";
+import ResetButton from "@/components/shared/ResetButton.vue";
 
 const usCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
-const khCurrency = new Intl.NumberFormat("km-KH", {
-  style: "currency",
-  currency: "KHR",
-});
-const khExchage = 4100;
-
 let discount: Ref<number> = ref(0);
 let options: Option[] = [
   { value: 0, label: "%0" },
@@ -41,11 +35,7 @@ let options: Option[] = [
             <h1 class="text-xl mb-2">Order Samuray</h1>
             <h3 class="text-sm text-gray-500">#01010101</h3>
           </div>
-          <button
-            class="p-4 bg-blue-500 rounded-md text-white hover:bg-blue-400 active:bg-blue-600"
-          >
-            <IconCalculator class="text-4xl" />
-          </button>
+          <ResetButton />
         </div>
         <Divide />
       </div>

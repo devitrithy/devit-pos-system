@@ -16,3 +16,8 @@ export interface Cart {
   product: Product;
   qty: number;
 }
+
+export interface Option {
+  value: number;
+  label: String;
+}

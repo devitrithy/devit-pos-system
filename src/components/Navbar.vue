@@ -20,38 +20,34 @@ const changeVolume = () => {
 };
 
 const controlVolume = () => {
-  console.log("HIT");
-
   if (stores.volume < 1) {
     mute.value = true;
   } else {
     mute.value = false;
   }
+  localStorage.setItem("volume", stores.volume.toString());
 };
-let search: Ref<String> = ref("");
 </script>
 <template>
   <nav
     class="flex items-center justify-between px-8 h-[88px] bg-container shadow-md"
   >
-    <div class="flex gap-9">
-      <h1 class="flex items-center uppercase text-blue-600 gap-2 text-xl">
-        <IconCart /> Shopping
-      </h1>
-      <div
-        class="rounded-full overflow-hidden flex items-center bg-gray-300 border border-transparent"
-      >
-        <input
-          type="text"
-          v-model="stores.searchProduct"
-          @keyup="stores.handleSearch"
-          class="bg-transparent outline-none indent-6 caret-blue-500"
-          placeholder="Search..."
-        />
-        <button class="bg-blue-500 text-white w-16 h-11">
-          <IconSearch class="text-3xl mx-auto" />
-        </button>
-      </div>
+    <a href="/" class="flex items-center uppercase text-blue-600 gap-2 text-xl">
+      <IconCart /> Shopping
+    </a>
+    <div
+      class="rounded-full overflow-hidden flex items-center justify-between bg-gray-300 border border-transparent w-2/3"
+    >
+      <input
+        type="text"
+        v-model="stores.searchProduct"
+        @keyup="stores.handleSearch"
+        class="bg-transparent outline-none indent-6 caret-blue-500 w-full"
+        placeholder="Search..."
+      />
+      <button class="bg-blue-500 text-white w-16 h-11">
+        <IconSearch class="text-3xl mx-auto" />
+      </button>
     </div>
     <div class="w-1/12 flex gap-4 items-center">
       <button @click="changeVolume">
