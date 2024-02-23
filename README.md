@@ -1,6 +1,6 @@
 # POS System UI
 
-I code this project for 3 days using Vue.js Typescript tailwindcss and Element UI Plus
+I code this project using Vue.js Typescript tailwindcss and Element UI Plus
 
 Here is the UX/UI design by me
 
